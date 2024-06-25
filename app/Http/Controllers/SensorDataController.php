@@ -9,9 +9,23 @@ class SensorDataController extends Controller
 {
     public function data()
     {
-        $result = SensorData::all();
+        $result = SensorData::orderBy('id', 'DESC');
         return datatables($result)
             ->addIndexColumn()
+            ->editColumn('door_mode', function ($row) {
+                if ($row->door_mode == 1) {
+                    return 'Manual';
+                } else {
+                    return 'Face';
+                }
+            })
+            ->editColumn('control_mode', function ($row) {
+                if ($row->control_mode == 2) {
+                    return 'Buka';
+                } else  {
+                    return 'Tutup';
+                }
+            })
             ->editColumn('created_at', function ($row) {
                 return $row->created_at->format('d-m-Y H:i:s');
             })

@@ -10,8 +10,8 @@
                     <x-slot name="thead">
                         <th>No</th>
                         <th>Tanggal</th>
-                        <th>Door Mode</th>
                         <th>Control Mode</th>
+                        <th>Status Pintu</th>
                     </x-slot>
                 </x-table>
             </x-card>
@@ -52,5 +52,10 @@
                 },
             ]
         });
+
+        // Refresh DataTable every 2 seconds
+        setInterval(function() {
+            table.ajax.reload(null, false); // user paging is not reset on reload
+        }, 2000);
     </script>
 @endpush

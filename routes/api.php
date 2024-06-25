@@ -9,4 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/faces/data', [SensorDataController::class, 'data'])->name('face.data');
-Route::apiResource('/face', SensorDataController::class);
+Route::apiResource('/face', SensorDataController::class)->only('store');

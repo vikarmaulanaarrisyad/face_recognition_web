@@ -8,5 +8,5 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/face/data', [SensorDataController::class, 'data'])->name('face.data');
+Route::get('/faces/data', [SensorDataController::class, 'data'])->name('face.data');
 Route::apiResource('/face', SensorDataController::class);

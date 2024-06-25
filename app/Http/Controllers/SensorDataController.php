@@ -40,9 +40,18 @@ class SensorDataController extends Controller
      */
     public function store(Request $request)
     {
-        SensorData::create($request->all());
+        // Validasi data jika diperlukan
+        $validatedData = $request->validate([
+            'door_mode' => 'required',
+            'control_mode' => 'required',
+            // tambahkan validasi lainnya jika diperlukan
+        ]);
 
-        return response()->json(['message' => 'Data berhasil disimpan',], 201);
+        // Simpan data sensor
+        SensorData::create($validatedData);
+
+        // Kembalikan respons JSON
+        return response()->json(['message' => 'Data berhasil disimpan'], 201);
     }
 
     /**

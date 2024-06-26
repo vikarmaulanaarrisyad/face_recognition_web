@@ -97,6 +97,8 @@ class SensorDataController extends Controller
      */
     public function destroy(SensorData $sensorData)
     {
-        //
+        $sensorData->truncate();
+
+        return response()->json(['message' => 'Data berhasil dihapus']);
     }
 }
